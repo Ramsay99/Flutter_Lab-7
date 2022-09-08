@@ -79,11 +79,11 @@ class _SecondScreenState extends State<SecondScreen> {
       alignment: Alignment.topCenter,
     );
   }
-}
 
-Container enterClass_Msg() {
-  return askingInput_Msg(
-    text: "Please Select your Class!",
-    foregroundColor: Colors.pink,
-  );
+  Container enterClass_Msg() {
+    return askingInput_Msg(
+      text: "Please Select your Class!",
+      foregroundColor: Colors.pink,
+    );
+  }
 }
