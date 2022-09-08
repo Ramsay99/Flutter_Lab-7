@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, sort_child_properties_last
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names, sort_child_properties_last, prefer_const_literals_to_create_immutables
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -36,34 +36,12 @@ class _SecondScreenState extends State<SecondScreen> {
       children: [
         enterInfo_msg(),
         Divider(),
-        MyDropDownItems(hintMsg: "How many person?"),
+        MyDropDownItems(
+          question: "How many person?",
+          myItems: ["1-9", "10-19", "20-29", "30-39"],
+        ),
+        Divider(),
       ],
-    );
-  }
-
-  Center dropDownItems() {
-    List myitems = ["1", "2", "3-5", "6"];
-    String currentItemValue = myitems[0];
-    return Center(
-      child: DropdownButton(
-        hint: Text("How many person?"),
-        // value: currentItemValue,
-        items: myitems
-            .map((e) => DropdownMenuItem(
-                  value: e,
-                  child: Center(
-                    child: Text(
-                      e.toString(),
-                    ),
-                  ),
-                ))
-            .toList(),
-        onChanged: (value) {
-          setState(() {});
-          currentItemValue = value.toString();
-          print(currentItemValue);
-        },
-      ),
     );
   }
 
