@@ -10,7 +10,7 @@ import './screens/firstscreen.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: Home(),
+    home: SecondScreen(),
   ));
 }
 
@@ -34,11 +34,13 @@ class _HomeState extends State<Home> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: StructureWidget.DEFUALT_BACKGROUND_COLOR,
       appBar: AppBar(
         title: Text("Lab 7"),
         centerTitle: true,
       ),
-      body: StructureWidget.formatPageWidget_Standard(btnsColumn()),
+      body:
+          StructureWidget.formatPageWidget_Standard(childWidget: btnsColumn()),
     );
   }
 
