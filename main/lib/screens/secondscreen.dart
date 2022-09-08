@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:main/main.dart';
+import 'package:main/structureWidget.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({super.key});
@@ -14,13 +15,12 @@ class SecondScreen extends StatefulWidget {
 class _SecondScreenState extends State<SecondScreen> {
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: Text("** 2nd Screen"),
-          centerTitle: true,
-        ),
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("** 2nd Screen"),
+        centerTitle: true,
       ),
+      body: StructureWidget.formatPageWidget_Standard(Text("2:Text Data")),
     );
   }
 }

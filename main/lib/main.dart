@@ -4,12 +4,13 @@ import 'dart:html';
 
 import 'package:flutter/material.dart';
 import 'package:main/screens/secondscreen.dart';
+import 'package:main/structureWidget.dart';
 import './screens/firstscreen.dart';
 
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: MyApp(),
+    home: Home(),
   ));
 }
 
@@ -37,41 +38,44 @@ class _HomeState extends State<Home> {
         title: Text("Lab 7"),
         centerTitle: true,
       ),
-      body: Center(
-        child: Container(
-          alignment: Alignment.center,
-          decoration: BoxDecoration(
-            color: Colors.brown.shade900,
-            image: DecorationImage(
-              image: NetworkImage(
-                  "https://images.pexels.com/photos/4388167/pexels-photo-4388167.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-              fit: BoxFit.fitHeight,
-            ),
-          ),
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              screenBtnNaviagtor("First Screen", FirstScreen()),
-              screenBtnNaviagtor("Second Screen", SecondScreen()),
-            ],
-          ),
-        ),
-      ),
+      body: StructureWidget.formatPageWidget_Standard(btnsColumn()),
     );
   }
 
-  Container screenBtnNaviagtor(String BtnText, StatefulWidget screenName) {
+  Column btnsColumn() {
+    return Column(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        screenBtnNaviagtor(
+            BtnText: "First Screen",
+            screenName: FirstScreen(),
+            backgroundColor: Colors.brown.shade200),
+        screenBtnNaviagtor(
+            BtnText: "Second Screen",
+            screenName: SecondScreen(),
+            backgroundColor: Colors.brown.shade200),
+      ],
+    );
+  }
+
+  Container screenBtnNaviagtor({
+    required String BtnText,
+    required StatefulWidget screenName,
+    Color backgroundColor = Colors.brown,
+    Color foregroundColor = Colors.black,
+  }) {
     return Container(
       width: 250,
       height: 40,
       margin: EdgeInsets.all(8),
       child: ElevatedButton(
         style: ButtonStyle(
-          backgroundColor: MaterialStateProperty.all(Colors.brown.shade200),
-          foregroundColor: MaterialStateProperty.all(Colors.black),
+          backgroundColor: MaterialStateProperty.all(backgroundColor),
+          foregroundColor: MaterialStateProperty.all(foregroundColor),
         ),
         onPressed: () {
           setState(() {
+            print("preesed $BtnText");
             Navigator.push(
               context,
               MaterialPageRoute(
@@ -80,7 +84,6 @@ class _HomeState extends State<Home> {
                 },
               ),
             );
-            return print("preesed $BtnText");
           });
         },
         child: Text(BtnText),
