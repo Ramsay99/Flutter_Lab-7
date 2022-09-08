@@ -1,4 +1,4 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, non_constant_identifier_names
 
 import 'package:flutter/material.dart';
 
@@ -31,8 +31,34 @@ class _HomeState extends State<Home> {
           title: Text("Lab 7"),
           centerTitle: true,
         ),
-        body: Text("Hello, Lab 7"),
+        body: Center(
+          child: Container(
+            alignment: Alignment.center,
+            decoration: BoxDecoration(
+              color: Colors.brown.shade900,
+              image: DecorationImage(
+                image: NetworkImage(
+                    "https://images.pexels.com/photos/4388167/pexels-photo-4388167.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+                fit: BoxFit.fitHeight,
+              ),
+            ),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                screenBtnNaviagtor("First Screen"),
+                screenBtnNaviagtor("Second Screen"),
+              ],
+            ),
+          ),
+        ),
       ),
+    );
+  }
+
+  ElevatedButton screenBtnNaviagtor(String BtnText) {
+    return ElevatedButton(
+      onPressed: () {},
+      child: Text(BtnText),
     );
   }
 }
