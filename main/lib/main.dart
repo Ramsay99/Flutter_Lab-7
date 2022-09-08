@@ -66,6 +66,10 @@ class _HomeState extends State<Home> {
       height: 40,
       margin: EdgeInsets.all(8),
       child: ElevatedButton(
+        style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(Colors.brown.shade200),
+          foregroundColor: MaterialStateProperty.all(Colors.black),
+        ),
         onPressed: () {
           setState(() {
             Navigator.push(
