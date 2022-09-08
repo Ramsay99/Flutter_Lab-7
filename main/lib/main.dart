@@ -43,7 +43,7 @@ class _HomeState extends State<Home> {
               ),
             ),
             child: Column(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 screenBtnNaviagtor("First Screen"),
                 screenBtnNaviagtor("Second Screen"),
@@ -55,10 +55,13 @@ class _HomeState extends State<Home> {
     );
   }
 
-  ElevatedButton screenBtnNaviagtor(String BtnText) {
-    return ElevatedButton(
-      onPressed: () {},
-      child: Text(BtnText),
+  Container screenBtnNaviagtor(String BtnText) {
+    return Container(
+      margin: EdgeInsets.all(10),
+      child: ElevatedButton(
+        onPressed: () {},
+        child: Text(BtnText),
+      ),
     );
   }
 }
