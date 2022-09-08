@@ -23,37 +23,54 @@ class _SecondScreenState extends State<SecondScreen> {
         centerTitle: true,
       ),
       body: StructureWidget.formatPageWidget_Standard(
-        networkImage: NetworkImage(
-            "https://images.pexels.com/photos/3616764/pexels-photo-3616764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
-        //"https://images.pexels.com/photos/3258236/pexels-photo-3258236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"),
+        networkImage: secondScreenNetowrkImage(),
         childWidget: body(),
       ),
     );
   }
 
+  NetworkImage secondScreenNetowrkImage() {
+    return NetworkImage(
+        "https://images.pexels.com/photos/3616764/pexels-photo-3616764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    //"https://images.pexels.com/photos/3258236/pexels-photo-3258236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+  }
+
   ListView body() {
     return ListView(
       children: [
-        enterInfo_msg(),
+        enterInfo_Msg(),
         Divider(),
         MyDropDownItems(
           question: "How many person?",
           myItems: ["1-9", "10-19", "20-29", "30-39"],
         ),
-        Divider(),
+        Divider(color: Colors.tealAccent, thickness: 3),
+        enterClass_Msg(),
       ],
     );
   }
 
-  Container enterInfo_msg() {
+  Container enterInfo_Msg() {
+    return askingInput_Msg(
+      text: "Please enter your information",
+      backgroundColor: Color.fromARGB(205, 255, 228, 145),
+      foregroundColor: Colors.black,
+    );
+  }
+
+  Container askingInput_Msg({
+    required String text,
+    Color backgroundColor = Colors.transparent,
+    Color foregroundColor = Colors.black,
+  }) {
     return Container(
       padding: EdgeInsets.all(8),
       margin: EdgeInsets.all(8),
-      color: Colors.amber.shade200,
+      color: backgroundColor,
       child: Text(
-        "Please enter your information",
+        text,
         style: TextStyle(
-          color: Colors.blue,
+          color: foregroundColor,
           fontSize: 30,
           fontWeight: FontWeight
               .bold, // fontWeight to be removed after adding fontStyle.
@@ -62,4 +79,11 @@ class _SecondScreenState extends State<SecondScreen> {
       alignment: Alignment.topCenter,
     );
   }
+}
+
+Container enterClass_Msg() {
+  return askingInput_Msg(
+    text: "Please Select your Class!",
+    foregroundColor: Colors.pink,
+  );
 }
