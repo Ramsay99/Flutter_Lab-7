@@ -17,6 +17,7 @@ class SecondScreen extends StatefulWidget {
 
 class _SecondScreenState extends State<SecondScreen> {
   String radioGroup_Class = "";
+    bool value = false;
 
   @override
   Widget build(BuildContext context) {
@@ -36,7 +37,7 @@ class _SecondScreenState extends State<SecondScreen> {
   NetworkImage screen_Two_NetowrkImage() {
     return NetworkImage(
         "https://images.pexels.com/photos/3616764/pexels-photo-3616764.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
-    //"https://images.pexels.com/photos/3258236/pexels-photo-3258236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
+    // "https://images.pexels.com/photos/3258236/pexels-photo-3258236.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1");
   }
 
   ListView body() {
@@ -62,7 +63,31 @@ class _SecondScreenState extends State<SecondScreen> {
           icon: Icon(Icons.money_off_csred),
         ),
         screen_Two_DefaultDivider(),
+        selectWhatUserHave_Msg(),
+        listViewCheckBoxes(),
       ],
+    );
+  }
+
+  SizedBox listViewCheckBoxes() {
+    return SizedBox(
+      height: 130,
+      child: ListView.builder(
+        itemCount: 2,
+        itemBuilder: (context, index) {
+          return CheckboxListTile(
+            secondary: Icon(Icons.pets),
+            title: Text("Title"),
+            subtitle: Text("SubTitle"),
+            value: value,
+            onChanged: (val) {
+              setState(() {
+                value = val!;
+              });
+            },
+          );
+        },
+      ),
     );
   }
 
@@ -124,6 +149,13 @@ class _SecondScreenState extends State<SecondScreen> {
           radioGroup_Class = value!.toString();
         });
       },
+    );
+  }
+
+  Container selectWhatUserHave_Msg() {
+    return askingInput_Msg(
+      text: "Please Select whatever you have during the trip",
+      foregroundColor: Colors.pink,
     );
   }
 }
