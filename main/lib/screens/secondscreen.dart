@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:main/MyDropDownItems.dart';
 import 'package:main/main.dart';
 import 'package:main/structureWidget.dart';
+import 'package:main/customwidget/mycheckboxgroup.dart';
 
 class SecondScreen extends StatefulWidget {
   const SecondScreen({super.key});
@@ -17,10 +18,19 @@ class SecondScreen extends StatefulWidget {
 
 class _SecondScreenState extends State<SecondScreen> {
   String radioGroup_Class = "";
-    bool value = false;
+  bool value = false;
+  MyCheckBoxGroup ramziChkBx = MyCheckBoxGroup();
 
   @override
   Widget build(BuildContext context) {
+    ramziChkBx.addCheckBox(
+      title: "Pets",
+      secondary: Icon(Icons.pets),
+      subtitle: "Dog, Cat, Elephant...",
+    );
+    ramziChkBx.addCheckBox(title: "2nd");
+    // print("\n.\n,\n.\n,");
+
     return Scaffold(
       backgroundColor: StructureWidget.DEFUALT_BACKGROUND_COLOR,
       appBar: AppBar(
@@ -71,24 +81,46 @@ class _SecondScreenState extends State<SecondScreen> {
 
   SizedBox listViewCheckBoxes() {
     return SizedBox(
-      height: 130,
+      height: 210,
       child: ListView.builder(
-        itemCount: 2,
+        itemCount: ramziChkBx.getAll().length, // #Here
         itemBuilder: (context, index) {
-          return CheckboxListTile(
-            secondary: Icon(Icons.pets),
-            title: Text("Title"),
-            subtitle: Text("SubTitle"),
-            value: value,
-            onChanged: (val) {
-              setState(() {
-                value = val!;
-              });
-            },
-          );
+          return checkboxListTile(index);
+          // CheckboxListTile(
+          //   secondary: Icon(Icons.pets), // #Here
+          //   title: Text("Title"), // #Here
+          //   subtitle: Text("SubTitle"), // #Here
+          //   value: value,
+          //   onChanged: (val) {
+          //     setState(() {
+          //       // value = val!; // #Here
+          //       itemChange(val!, index);
+          //     });
+          //   },
+          // );
         },
       ),
     );
+  }
+
+  CheckboxListTile checkboxListTile(int index) {
+    return CheckboxListTile(
+      value: ramziChkBx.getAll().values.elementAt(index),
+      secondary: ramziChkBx.secondaryWidget(),
+      title: Text(ramziChkBx.getTitle(index)),
+      subtitle: Text(ramziChkBx.getSubTitle(index)),
+      onChanged: (value) {
+        itemChange(value!, index);
+      },
+    );
+  }
+
+  void itemChange(bool val, int index) {
+    setState(() {
+      ramziChkBx.setValue(index, val);
+      // print(ramziChkBx.getAll());
+      // print(ramziChkBx.getTitle(index));
+    });
   }
 
   Container enterInfo_Msg() {
