@@ -28,7 +28,7 @@ class _SecondScreenState extends State<SecondScreen> {
       secondary: Icon(Icons.pets),
       subtitle: "Dog, Cat, Elephant...",
     );
-    ramziChkBx.addCheckBox(title: "2nd");
+    ramziChkBx.addCheckBox(title: "Medicin");
     // print("\n.\n,\n.\n,");
 
     return Scaffold(

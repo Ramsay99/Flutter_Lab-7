@@ -10,7 +10,7 @@ import './screens/firstscreen.dart';
 void main() {
   runApp(MaterialApp(
     debugShowCheckedModeBanner: false,
-    home: SecondScreen(),
+    home: MyApp(),
   ));
 }
 

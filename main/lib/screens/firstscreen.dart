@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:main/main.dart';
+import 'package:main/structureWidget.dart';
 
 class FirstScreen extends StatefulWidget {
   const FirstScreen({super.key});
@@ -20,7 +21,14 @@ class _FirstScreenState extends State<FirstScreen> {
           title: Text("1st Screen"),
           centerTitle: true,
         ),
+        body: StructureWidget.formatPageWidget_Standard(
+          childWidget: body(),
+        ),
       ),
     );
+  }
+
+  Row body() {
+    return Row();
   }
 }
